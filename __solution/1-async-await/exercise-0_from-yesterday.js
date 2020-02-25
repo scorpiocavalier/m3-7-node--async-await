@@ -15,13 +15,15 @@ const compareToTen = (num) => {
 }
 
 // Calling the Promise
-compareToTen(15)
-    .then(result => console.log(result))
-    .catch(error => console.log(error))
+const myFunc = async (num) => {
+    try {
+        const result = await compareToTen(num);
+        console.log(result);
+    } catch (err) { console.log(err) }
+}
 
-compareToTen(8)
-    .then(result => console.log(result))
-    .catch(error => console.log(error))
+myFunc(15);
+myFunc(8);
 
     
 // Exercise 0.1
@@ -53,12 +55,13 @@ const sortWords = (array) => {
     })
 } 
 
-makeAllCaps(['cucumber', 'tomatos', 'avocado'])
-    .then(sortWords)
-    .then((result) => console.log(result))
-    .catch(error => console.log(error));
+const textTransform = async (array) => {
+    try {
+        const upperCase = await makeAllCaps(array);
+        const sorted = await sortWords(upperCase);
+        console.log(sorted);
+    } catch (err) { console.log(err) }
+}
 
-makeAllCaps(['cucumber', 44, true])
-    .then(sortWords)
-    .then((result) => console.log(result))
-    .catch(error => console.log(error));
+textTransform(['cucumber', 'tomatos', 'avocado']);
+textTransform(['cucumber', 44, true]);
