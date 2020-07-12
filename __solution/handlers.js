@@ -1,24 +1,26 @@
-const { getDadJoke } = require('./__workshop/2-promises-in-action/exercise-3');
-const { getTronaldDump } = require('./__workshop/2-promises-in-action/exercise-4');
-const { getGeekJoke } = require('./__workshop/2-promises-in-action/exercise-5');
+const { getDadJoke } = require('./__solution/exercise-4.1');
+const { getTronaldDumpQuote } = require('./__solution/exercise-4.2');
+const { getGeekJoke } = require('./__solution/exercise-4.3');
 
 const handleJoke = async (req, res) => {
-    const { type } = req.body;
-    let joke = '';
-    switch (type) {
-        case 'geek':
-            joke = await getGeekJoke();
-            break;
-        case 'tronald':
-            joke = await getTronaldDump();
-            break;
-        case 'dad':
-        default:
-            joke = (await getDadJoke()).joke;
-            break;
-    }
+  const { type } = req.params;
+  const response = { status: 200 };
+  switch (type) {
+    case 'geek':
+      response.joke = await getGeekJoke();
+      break;
+    case 'tronald':
+      response.joke = await getTronaldDumpQuote();
+      break;
+    case 'dad':
+      response.joke = await getDadJoke();
+      break;
+    default:
+      response.status = 400;
+      response.message = 'Unrecognized joke type.';
+      break;
+  }
+  res.status(response.status).json(response);
+};
 
-    res.status(200).json({data: joke});
-}
-
-module.exports = { handleJoke }
+module.exports = { handleJoke };
