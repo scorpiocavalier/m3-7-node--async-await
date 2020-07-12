@@ -132,6 +132,7 @@ module.exports = { myFunction };
 
 3. `Require` all of the joke functions in the provided `handlers.js` file.
 4. This file should also contain a function called `handleJoke` that returns a joke of the type requested (`dad`, `tronald` or `geek`).
+5. Don't forget to do `yarn dev` to run the server.
 
 ## <img src="__lecture/assets/joke-endpoint.gif" />
 
