@@ -8,12 +8,7 @@ const options = {
 }
 
 // getDadJoke
-const getDadJoke = () => {
-  return new Promise((resolve, reject) => {
-    resolve(request(options))
-    reject('No jokes today.')
-  })
-}
+const getDadJoke = async () => request(options)
 
 // 4.1
 getDadJoke().then(data => console.log(data.joke))
