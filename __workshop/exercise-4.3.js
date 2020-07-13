@@ -1,5 +1,13 @@
 const request = require('request-promise');
 
-const getGeekJoke = async () => {
-  // ha hahahh
-};
+const endpoint = {
+  uri: "https://geek-jokes.sameerkumar.website/api?format=json",
+  headers: {
+    "Accept": "Application/json"
+  },
+  json: true
+}
+
+const getGeekJoke = async () => request(endpoint)
+
+getGeekJoke().then(response => console.log(response.joke))
