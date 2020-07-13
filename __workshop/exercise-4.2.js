@@ -9,4 +9,6 @@ const endpoint = {
 
 const getTronaldDumpQuote = async () => request(endpoint)
 
-getTronaldDumpQuote().then(quote => console.log(quote.value))
+// getTronaldDumpQuote().then(quote => console.log(quote.value))
+
+module.exports = { getTronaldDumpQuote }

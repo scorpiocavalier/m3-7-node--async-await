@@ -1,5 +1,5 @@
 const request = require('request-promise');
-const options = {
+const endpoint = {
   uri: "https://icanhazdadjoke.com/",
   headers: {
     "Accept": "application/json"
@@ -8,7 +8,8 @@ const options = {
 }
 
 // getDadJoke
-const getDadJoke = async () => request(options)
+const getDadJoke = async () => request(endpoint)
 
-// 4.1
-getDadJoke().then(data => console.log(data.joke))
+// getDadJoke().then(data => console.log(data.joke))
+
+module.exports = { getDadJoke }

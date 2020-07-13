@@ -10,4 +10,6 @@ const endpoint = {
 
 const getGeekJoke = async () => request(endpoint)
 
-getGeekJoke().then(response => console.log(response.joke))
+// getGeekJoke().then(response => console.log(response.joke))
+
+module.exports = { getGeekJoke }

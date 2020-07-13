@@ -1,10 +1,9 @@
 'use strict';
 
-const express = require('express');
-const bodyParser = require('body-parser');
-const morgan = require('morgan');
-
-const { handleJoke } = require('./handlers');
+const express         = require('express');
+const bodyParser      = require('body-parser');
+const morgan          = require('morgan');
+const { handleJoke }  = require('./handlers');
 
 express()
   .use(function (req, res, next) {
@@ -22,5 +21,7 @@ express()
   .set('view engine', 'ejs')
 
   // endpoints
+  .get('/', (req, res) => res.send('Root'))
+  .get('/joke/:type', handleJoke)
 
   .listen(8000, () => console.log(`Listening on port 8000`));
